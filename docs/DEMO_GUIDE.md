@@ -33,21 +33,24 @@ liability in the books they already use.
 
 ## Retail Loyalty menu
 
-Open the **Retail Loyalty** workspace from the app menu. Its five feature shortcuts are:
+Open the **Retail Loyalty** workspace from the app menu. The left navigation and workspace
+shortcuts use the requirement names:
 
-1. **Customer Registration** opens a new app-owned Loyalty Member form.
-2. **QR Customer Identification** opens the POS Simulator, where staff can scan a
+1. **Customer Registration & Digital Membership Card** opens Loyalty Member records;
+   create a member there or use the public join form.
+2. **QR Code-based Customer Identification** opens the POS Simulator, where staff can scan a
    member's QR code or look them up by card/mobile.
 3. **Customer Profile & Purchase History** opens Loyalty Member records, with linked
    ERPNext customers, digital cards, invoices and points history.
-4. **Customer Analytics Dashboard** opens the loyalty management dashboard.
-5. **Mobile Join & Digital Card** also serves as the customer's mobile-friendly card
-   entry point; issued cards open at `/card/<token>` and can be saved to a phone's home
-   screen.
+4. **Customer Analytics and Management Dashboard** opens the loyalty management dashboard.
+5. **Mobile Application / Digital Customer Card Integration** opens the mobile portal
+   with the public join link and instructions for issuing existing digital cards. Issued
+   cards open at `/card/<token>` and can be saved to a phone's home screen.
 
 The workspace also links to ERPNext Customer, Sales Invoice and Loyalty Program records.
 When Frappe CRM is installed, member/segment actions can create CRM Leads; CRM remains
-the system of record for those leads.
+the system of record for those leads. The mobile card and API are provided; a native
+iOS/Android app is not part of this demo.
 
 ## Demo data
 
