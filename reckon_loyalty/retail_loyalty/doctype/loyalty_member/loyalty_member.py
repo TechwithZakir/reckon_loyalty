@@ -15,7 +15,9 @@ class LoyaltyMember(Document):
 
     def before_insert(self):
         settings = get_settings()
-        self.company = self.company or settings.company
+        # Always the programme's company: Frappe pre-fills Link fields named "company" with
+        # the user's default, which may be a different company on a shared site.
+        self.company = settings.company
         self.loyalty_program = settings.loyalty_program
         self.enrollment_date = self.enrollment_date or today()
         self.qr_token = frappe.generate_hash(length=24)

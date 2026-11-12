@@ -32,6 +32,7 @@ def run(members=60, months=6, force_sales=0):
     program = _program(company)
     _settings(company, program)
     _fiscal_years(company, cint(months))
+    _repair_company(company, program)
     frappe.db.commit()
 
     member_names = _members(rng, cint(members), cint(months), stores)
@@ -220,6 +221,7 @@ def _settings(company, program):
             "birthday_bonus_points": 250,
             "default_mode_of_payment": "Cash",
             "update_stock": 0,
+            "default_warehouse": None,
             "create_crm_lead": 1,
             "crm_lead_source": "Loyalty Signup",
         }
@@ -254,6 +256,28 @@ def _fiscal_years(company, months):
         if doc.companies and not any(row.company == company for row in doc.companies):
             doc.append("companies", {"company": company})
             doc.save(ignore_permissions=True)
+
+
+def _repair_company(company, program):
+    """Move demo members that an earlier run stamped with the user's default company."""
+    wrong = frappe.get_all(
+        "Loyalty Member",
+        filters={"loyalty_program": program, "company": ["!=", company]},
+        fields=["name", "customer"],
+        limit=0,
+    )
+    if not wrong:
+        return
+    names, customers = [row.name for row in wrong], [row.customer for row in wrong]
+    frappe.db.sql("update `tabLoyalty Member` set company = %s where name in %s", (company, names))
+    frappe.db.sql(
+        "update `tabLoyalty Point Entry` set company = %s where loyalty_program = %s and customer in %s",
+        (company, program, customers),
+    )
+    frappe.db.sql("update `tabLoyalty Message Log` set company = %s where member in %s", (company, names))
+    if frappe.get_meta("Customer").has_field("rd_company"):
+        frappe.db.sql("update `tabCustomer` set rd_company = %s where name in %s", (company, customers))
+    print(f"  moved {len(names)} members to {company}")
 
 
 # ---------------------------------------------------------------- members
