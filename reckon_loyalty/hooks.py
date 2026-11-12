@@ -49,4 +49,5 @@ scheduler_events = {
 
 website_route_rules = [
     {"from_route": "/card/<token>", "to_route": "loyalty_card"},
+    {"from_route": "/loyalty-join", "to_route": "loyalty_join"},
 ]
