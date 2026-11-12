@@ -106,9 +106,10 @@ If any step fails nothing is posted, and the request and error are kept in **Loy
 {"external_id": "BSH-T01-R00012", "original_external_id": "BSH-T01-000184"}
 ```
 
-Posts a full credit note against the original sale. ERPNext recalculates the points earned on
-that sale. A sale whose earned points were already redeemed elsewhere cannot be returned until
-that redemption is reversed (standard ERPNext rule).
+Posts a full credit note against the original sale. ERPNext removes the points earned on that
+sale and gives back the points that were redeemed on it. A sale whose earned points were already
+redeemed on a later sale cannot be returned until that later redemption is reversed (standard
+ERPNext rule).
 
 ## Rewards
 

@@ -22,7 +22,7 @@ from erpnext.accounts.doctype.sales_invoice.sales_invoice import get_bank_cash_a
 from reckon_loyalty.services import members as member_service
 from reckon_loyalty.services import points as points_service
 from reckon_loyalty.services import rewards as reward_service
-from reckon_loyalty.services.utils import require_enabled, require_role
+from reckon_loyalty.services.utils import as_system, require_enabled, require_role
 
 
 # ---------------------------------------------------------------- members
@@ -46,16 +46,17 @@ def register_member(member_name, mobile_no, email=None, gender=None, date_of_bir
         profile = member_service.member_profile(existing)
         profile["already_registered"] = True
         return profile
-    member = member_service.enroll(
-        member_name,
-        mobile_no,
-        channel="POS",
-        email=email,
-        gender=gender,
-        date_of_birth=date_of_birth,
-        home_store=_store(store),
-        city=city,
-    )
+    with as_system():
+        member = member_service.enroll(
+            member_name,
+            mobile_no,
+            channel="POS",
+            email=email,
+            gender=gender,
+            date_of_birth=date_of_birth,
+            home_store=_store(store),
+            city=city,
+        )
     member.reload()
     profile = member_service.member_profile(member)
     profile["already_registered"] = False
@@ -85,14 +86,17 @@ def get_rewards(identifier=None):
 def redeem_reward(identifier, reward, store=None):
     require_role()
     member = member_service.get_member(identifier)
-    result = reward_service.redeem_reward(member.name, reward, store=_store(store))
+    with as_system():
+        result = reward_service.redeem_reward(member.name, reward, store=_store(store))
     result["points_balance"] = points_service.get_balance(member.customer, member.loyalty_program, member.company)
     return result
 
 
 @frappe.whitelist(methods=["POST"])
 def use_voucher(voucher_code, store=None):
-    return reward_service.mark_used(voucher_code, store=_store(store))
+    require_role()
+    with as_system():
+        return reward_service.mark_used(voucher_code, store=_store(store))
 
 
 # ---------------------------------------------------------------- catalogue
@@ -152,7 +156,11 @@ def sync_transaction(**payload):
         posting_date  Optional YYYY-MM-DD (for offline tills that sync later).
     """
     require_role()
-    payload = _clean(payload)
+    with as_system():
+        return _sync_transaction(_clean(payload))
+
+
+def _sync_transaction(payload):
     external_id = (payload.get("external_id") or "").strip()
     if not external_id:
         frappe.throw(_("external_id is required."))
@@ -309,7 +317,11 @@ def _set_payments(invoice, payments, amount_due, settings):
 def sync_return(external_id, original_external_id=None, invoice=None):
     """Post a full return of an earlier sale. Earned points are reversed by ERPNext."""
     require_role()
-    external_id = (external_id or "").strip()
+    with as_system():
+        return _sync_return((external_id or "").strip(), original_external_id, invoice)
+
+
+def _sync_return(external_id, original_external_id, invoice):
     if not external_id:
         frappe.throw(_("external_id is required."))
     previous = frappe.db.get_value(

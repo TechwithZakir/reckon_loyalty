@@ -1,5 +1,6 @@
 import io
 import re
+from contextlib import contextmanager
 
 import frappe
 from frappe import _
@@ -28,6 +29,32 @@ def require_role(roles=STAFF_ROLES):
         return
     if not set(roles) & set(frappe.get_roles()):
         frappe.throw(_("You are not allowed to use the loyalty service."), frappe.PermissionError)
+
+
+@contextmanager
+def as_system():
+    """Run a vetted server-side action with system rights.
+
+    The loyalty endpoints check the caller first (role, or a consenting guest on the sign-up
+    form) and then post documents the caller has no direct permission on: a Customer, a
+    Sales Invoice, ledger entries. On a multi-company site those documents also pass
+    through tenant hooks that expect a company user, so the write runs as Administrator.
+    """
+    original = frappe.session.user
+    if original == "Administrator":
+        yield
+        return
+
+    def switch(user):
+        frappe.local.session.user = user
+        frappe.local.role_permissions = {}
+        frappe.local.user_perms = None
+
+    switch("Administrator")
+    try:
+        yield
+    finally:
+        switch(original)
 
 
 def normalize_mobile(value, strict=True):

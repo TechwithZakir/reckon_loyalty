@@ -13,7 +13,7 @@ from frappe.utils import cint
 from reckon_loyalty.services import members as member_service
 from reckon_loyalty.services import points as points_service
 from reckon_loyalty.services import rewards as reward_service
-from reckon_loyalty.services.utils import get_settings, require_enabled, tier_rules
+from reckon_loyalty.services.utils import as_system, get_settings, require_enabled, tier_rules
 
 
 def card_data(token):
@@ -93,17 +93,19 @@ def join(member_name, mobile_no, email=None, gender=None, date_of_birth=None, ci
         # Never hand out an existing card to whoever typed the number: resend the link to the phone.
         from reckon_loyalty.services.campaigns import send_welcome
 
-        send_welcome(existing)
+        with as_system():
+            send_welcome(existing)
         return {"status": "exists", "message": _("This mobile number is already a member. We have sent the card link by SMS.")}
 
-    member = member_service.enroll(
-        member_name,
-        mobile_no,
-        channel="Mobile App" if channel == "Mobile App" else "Web",
-        email=email,
-        gender=gender if gender in ("Male", "Female", "Other") else None,
-        date_of_birth=date_of_birth,
-        city=city,
-        home_store=store if store and frappe.db.exists("Loyalty Store", store) else None,
-    )
+    with as_system():
+        member = member_service.enroll(
+            member_name,
+            mobile_no,
+            channel="Mobile App" if channel == "Mobile App" else "Web",
+            email=email,
+            gender=gender if gender in ("Male", "Female", "Other") else None,
+            date_of_birth=date_of_birth,
+            city=city,
+            home_store=store if store and frappe.db.exists("Loyalty Store", store) else None,
+        )
     return {"status": "created", "card_number": member.card_number, "card_url": f"/card/{member.qr_token}"}
