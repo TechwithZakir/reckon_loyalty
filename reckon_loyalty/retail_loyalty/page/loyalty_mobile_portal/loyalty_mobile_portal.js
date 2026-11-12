@@ -22,5 +22,6 @@ frappe.pages["loyalty-mobile-portal"].on_page_load = function (wrapper) {
 			<p>${__("Open a Loyalty Member record and choose Open Digital Card to view that member's QR code, points, vouchers and purchase history.")}</p>
 			<p>${__("Customers can save their card page to a phone home screen. The QR token and card API also support a future native mobile application.")}</p>
 		</div>
+		<footer class="text-muted small text-center mt-4">${__("Developed by Reckon Technologies Ltd.")}</footer>
 	`);
 };

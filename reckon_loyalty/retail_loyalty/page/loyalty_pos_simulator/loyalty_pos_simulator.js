@@ -48,6 +48,10 @@ frappe.pages["loyalty-pos-simulator"].on_page_load = function (wrapper) {
 			</div>
 		</div>`).appendTo(page.main);
 
+	$('<footer class="text-muted small text-center mt-4">Developed by Reckon Technologies Ltd.</footer>').appendTo(
+		page.main
+	);
+
 	function call(method, args, type) {
 		const started = performance.now();
 		return frappe

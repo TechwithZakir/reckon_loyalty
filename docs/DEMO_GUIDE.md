@@ -50,7 +50,8 @@ shortcuts use the requirement names:
 The workspace also links to ERPNext Customer, Sales Invoice and Loyalty Program records.
 When Frappe CRM is installed, member/segment actions can create CRM Leads; CRM remains
 the system of record for those leads. The mobile card and API are provided; a native
-iOS/Android app is not part of this demo.
+iOS/Android app is not part of this demo. Customer-facing pages are attributed to
+**Reckon Technologies Ltd.**
 
 ## Demo data
 

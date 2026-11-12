@@ -93,6 +93,10 @@ frappe.pages["loyalty-dashboard"].on_page_load = function (wrapper) {
 					</tbody></table></div>
 			</div>`);
 
+		$body.append(
+			`<footer class="text-muted small text-center mt-4">${__("Developed by Reckon Technologies Ltd.")}</footer>`
+		);
+
 		const months = d.trend.map((t) => moment(t.month + "-01").format("MMM YY"));
 		chart("#rl-chart-sales", {
 			type: "bar",
