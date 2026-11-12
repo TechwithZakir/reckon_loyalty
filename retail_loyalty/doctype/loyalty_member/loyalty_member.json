@@ -1,0 +1,356 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "card_html",
+  "sb_identity",
+  "member_name",
+  "mobile_no",
+  "email",
+  "gender",
+  "date_of_birth",
+  "cb_identity",
+  "status",
+  "city",
+  "home_store",
+  "enrollment_date",
+  "enrollment_channel",
+  "sb_card",
+  "card_number",
+  "qr_token",
+  "customer",
+  "company",
+  "cb_card",
+  "sms_opt_in",
+  "email_opt_in",
+  "crm_lead",
+  "tab_loyalty",
+  "loyalty_program",
+  "tier",
+  "points_balance",
+  "points_expiring_30d",
+  "cb_loyalty",
+  "lifetime_points",
+  "points_redeemed",
+  "rfm_segment",
+  "sb_purchase",
+  "lifetime_spend",
+  "total_orders",
+  "avg_basket",
+  "cb_purchase",
+  "first_purchase_date",
+  "last_purchase_date",
+  "days_since_last_purchase",
+  "tab_history",
+  "history_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "card_html",
+   "fieldtype": "HTML",
+   "label": "Digital Card"
+  },
+  {
+   "fieldname": "sb_identity",
+   "fieldtype": "Section Break",
+   "label": "Member"
+  },
+  {
+   "fieldname": "member_name",
+   "fieldtype": "Data",
+   "label": "Member Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "\nMale\nFemale\nOther",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "cb_identity",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nInactive\nBlocked",
+   "default": "Active",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "home_store",
+   "fieldtype": "Link",
+   "label": "Home Store",
+   "options": "Loyalty Store",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "enrollment_date",
+   "fieldtype": "Date",
+   "label": "Enrolment Date"
+  },
+  {
+   "fieldname": "enrollment_channel",
+   "fieldtype": "Select",
+   "label": "Enrolment Channel",
+   "options": "POS\nWeb\nMobile App\nBack Office\nImport",
+   "default": "Back Office"
+  },
+  {
+   "fieldname": "sb_card",
+   "fieldtype": "Section Break",
+   "label": "Card and Consent"
+  },
+  {
+   "fieldname": "card_number",
+   "fieldtype": "Data",
+   "label": "Card Number",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "qr_token",
+   "fieldtype": "Data",
+   "label": "QR Token",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "unique": 1,
+   "no_copy": 1,
+   "description": "Created automatically when left blank."
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "cb_card",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sms_opt_in",
+   "fieldtype": "Check",
+   "label": "SMS Opt-in",
+   "default": "1"
+  },
+  {
+   "fieldname": "email_opt_in",
+   "fieldtype": "Check",
+   "label": "Email Opt-in",
+   "default": "1"
+  },
+  {
+   "fieldname": "crm_lead",
+   "fieldtype": "Data",
+   "label": "Frappe CRM Lead",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tab_loyalty",
+   "fieldtype": "Tab Break",
+   "label": "Loyalty"
+  },
+  {
+   "fieldname": "loyalty_program",
+   "fieldtype": "Link",
+   "label": "Loyalty Program",
+   "options": "Loyalty Program",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tier",
+   "fieldtype": "Data",
+   "label": "Tier",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "points_balance",
+   "fieldtype": "Int",
+   "label": "Points Balance",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "points_expiring_30d",
+   "fieldtype": "Int",
+   "label": "Points Expiring in 30 Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_loyalty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lifetime_points",
+   "fieldtype": "Int",
+   "label": "Lifetime Points Earned",
+   "read_only": 1
+  },
+  {
+   "fieldname": "points_redeemed",
+   "fieldtype": "Int",
+   "label": "Points Redeemed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rfm_segment",
+   "fieldtype": "Data",
+   "label": "Behaviour Segment",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_purchase",
+   "fieldtype": "Section Break",
+   "label": "Purchase Summary"
+  },
+  {
+   "fieldname": "lifetime_spend",
+   "fieldtype": "Currency",
+   "label": "Lifetime Spend",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_orders",
+   "fieldtype": "Int",
+   "label": "Total Orders",
+   "read_only": 1
+  },
+  {
+   "fieldname": "avg_basket",
+   "fieldtype": "Currency",
+   "label": "Average Basket",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_purchase",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_purchase_date",
+   "fieldtype": "Date",
+   "label": "First Purchase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_purchase_date",
+   "fieldtype": "Date",
+   "label": "Last Purchase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "days_since_last_purchase",
+   "fieldtype": "Int",
+   "label": "Days Since Last Purchase",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_history",
+   "fieldtype": "Tab Break",
+   "label": "Purchase History"
+  },
+  {
+   "fieldname": "history_html",
+   "fieldtype": "HTML",
+   "label": "Purchase History"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Member",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Loyalty POS",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "member_name",
+ "search_fields": "member_name,mobile_no,card_number",
+ "show_title_field_in_link": 1,
+ "track_changes": 1
+}

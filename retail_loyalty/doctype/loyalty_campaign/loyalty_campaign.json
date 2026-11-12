@@ -1,0 +1,257 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "campaign_name",
+  "segment",
+  "channel",
+  "cb0",
+  "status",
+  "scheduled_at",
+  "company",
+  "sb_offer",
+  "offer_code",
+  "bonus_points",
+  "cb1",
+  "start_date",
+  "end_date",
+  "sb_sms",
+  "sms_message",
+  "sb_email",
+  "email_subject",
+  "email_message",
+  "tab_results",
+  "targeted",
+  "sms_sent",
+  "email_sent",
+  "failed",
+  "cb2",
+  "sent_on",
+  "attributed_orders",
+  "attributed_revenue",
+  "bonus_points_issued"
+ ],
+ "fields": [
+  {
+   "fieldname": "campaign_name",
+   "fieldtype": "Data",
+   "label": "Campaign Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "segment",
+   "fieldtype": "Link",
+   "label": "Target Segment",
+   "options": "Loyalty Segment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Select",
+   "label": "Channel",
+   "options": "SMS\nEmail\nSMS and Email",
+   "reqd": 1,
+   "default": "SMS",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nScheduled\nSending\nSent\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "scheduled_at",
+   "fieldtype": "Datetime",
+   "label": "Schedule For",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "sb_offer",
+   "fieldtype": "Section Break",
+   "label": "Offer"
+  },
+  {
+   "fieldname": "offer_code",
+   "fieldtype": "Data",
+   "label": "Offer Code"
+  },
+  {
+   "fieldname": "bonus_points",
+   "fieldtype": "Int",
+   "label": "Bonus Points per Member",
+   "description": "Credited to every targeted member when the campaign is sent."
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Offer Starts"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "Offer Ends"
+  },
+  {
+   "fieldname": "sb_sms",
+   "fieldtype": "Section Break",
+   "label": "SMS",
+   "depends_on": "eval:doc.channel!='Email'"
+  },
+  {
+   "fieldname": "sms_message",
+   "fieldtype": "Small Text",
+   "label": "SMS Text",
+   "description": "Placeholders: {{ member_name }}, {{ first_name }}, {{ tier }}, {{ points_balance }}, {{ card_number }}, {{ offer_code }}, {{ card_url }}"
+  },
+  {
+   "fieldname": "sb_email",
+   "fieldtype": "Section Break",
+   "label": "Email",
+   "depends_on": "eval:doc.channel!='SMS'"
+  },
+  {
+   "fieldname": "email_subject",
+   "fieldtype": "Data",
+   "label": "Email Subject"
+  },
+  {
+   "fieldname": "email_message",
+   "fieldtype": "Text Editor",
+   "label": "Email Body"
+  },
+  {
+   "fieldname": "tab_results",
+   "fieldtype": "Tab Break",
+   "label": "Results"
+  },
+  {
+   "fieldname": "targeted",
+   "fieldtype": "Int",
+   "label": "Members Targeted",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sms_sent",
+   "fieldtype": "Int",
+   "label": "SMS Sent",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "email_sent",
+   "fieldtype": "Int",
+   "label": "Emails Sent",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "failed",
+   "fieldtype": "Int",
+   "label": "Failed or Skipped",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Datetime",
+   "label": "Sent On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "attributed_orders",
+   "fieldtype": "Int",
+   "label": "Orders in Offer Window",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "attributed_revenue",
+   "fieldtype": "Currency",
+   "label": "Revenue in Offer Window",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "bonus_points_issued",
+   "fieldtype": "Int",
+   "label": "Bonus Points Issued",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Campaign",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:campaign_name",
+ "naming_rule": "By fieldname"
+}

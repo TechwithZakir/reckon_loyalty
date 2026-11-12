@@ -1,0 +1,281 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "segment_name",
+  "description",
+  "cb0",
+  "is_active",
+  "company",
+  "member_count",
+  "total_spend",
+  "last_refreshed",
+  "sb_profile",
+  "tiers",
+  "gender",
+  "birthday_month",
+  "cb1",
+  "home_store",
+  "city",
+  "enrolled_within_days",
+  "sb_behaviour",
+  "min_lifetime_spend",
+  "max_lifetime_spend",
+  "min_orders",
+  "max_orders",
+  "cb2",
+  "purchased_within_days",
+  "not_purchased_in_days",
+  "min_points_balance",
+  "rfm_segment",
+  "sb_affinity",
+  "item_group",
+  "cb3",
+  "item_group_within_days",
+  "sb_consent",
+  "require_sms_opt_in",
+  "cb4",
+  "require_email_opt_in",
+  "sb_preview",
+  "preview_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "segment_name",
+   "fieldtype": "Data",
+   "label": "Segment Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "cb0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "member_count",
+   "fieldtype": "Int",
+   "label": "Members",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_spend",
+   "fieldtype": "Currency",
+   "label": "Lifetime Spend of Segment",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_refreshed",
+   "fieldtype": "Datetime",
+   "label": "Last Refreshed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_profile",
+   "fieldtype": "Section Break",
+   "label": "Who they are"
+  },
+  {
+   "fieldname": "tiers",
+   "fieldtype": "Data",
+   "label": "Tiers",
+   "description": "Comma separated, for example Gold, Platinum"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "\nMale\nFemale\nOther"
+  },
+  {
+   "fieldname": "birthday_month",
+   "fieldtype": "Select",
+   "label": "Birthday In",
+   "options": "\nThis Month\nNext Month\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "home_store",
+   "fieldtype": "Link",
+   "label": "Home Store",
+   "options": "Loyalty Store"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "enrolled_within_days",
+   "fieldtype": "Int",
+   "label": "Enrolled Within (Days)"
+  },
+  {
+   "fieldname": "sb_behaviour",
+   "fieldtype": "Section Break",
+   "label": "How they buy"
+  },
+  {
+   "fieldname": "min_lifetime_spend",
+   "fieldtype": "Currency",
+   "label": "Lifetime Spend From"
+  },
+  {
+   "fieldname": "max_lifetime_spend",
+   "fieldtype": "Currency",
+   "label": "Lifetime Spend Up To"
+  },
+  {
+   "fieldname": "min_orders",
+   "fieldtype": "Int",
+   "label": "Orders From"
+  },
+  {
+   "fieldname": "max_orders",
+   "fieldtype": "Int",
+   "label": "Orders Up To"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchased_within_days",
+   "fieldtype": "Int",
+   "label": "Purchased Within (Days)"
+  },
+  {
+   "fieldname": "not_purchased_in_days",
+   "fieldtype": "Int",
+   "label": "No Purchase In (Days)"
+  },
+  {
+   "fieldname": "min_points_balance",
+   "fieldtype": "Int",
+   "label": "Points Balance From"
+  },
+  {
+   "fieldname": "rfm_segment",
+   "fieldtype": "Select",
+   "label": "Behaviour Segment",
+   "options": "\nChampion\nLoyal\nPromising\nNew\nAt Risk\nLapsed\nNo Purchase"
+  },
+  {
+   "fieldname": "sb_affinity",
+   "fieldtype": "Section Break",
+   "label": "What they buy"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Bought From Category",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "cb3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_group_within_days",
+   "fieldtype": "Int",
+   "label": "Category Purchase Within (Days)"
+  },
+  {
+   "fieldname": "sb_consent",
+   "fieldtype": "Section Break",
+   "label": "Reachability"
+  },
+  {
+   "fieldname": "require_sms_opt_in",
+   "fieldtype": "Check",
+   "label": "Only SMS Opt-in"
+  },
+  {
+   "fieldname": "cb4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "require_email_opt_in",
+   "fieldtype": "Check",
+   "label": "Only Email Opt-in"
+  },
+  {
+   "fieldname": "sb_preview",
+   "fieldtype": "Section Break",
+   "label": "Members"
+  },
+  {
+   "fieldname": "preview_html",
+   "fieldtype": "HTML",
+   "label": "Preview"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Segment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:segment_name",
+ "naming_rule": "By fieldname"
+}

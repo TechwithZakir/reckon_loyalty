@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "external_id",
+  "transaction_type",
+  "status",
+  "store",
+  "terminal",
+  "cb1",
+  "member",
+  "sales_invoice",
+  "grand_total",
+  "points_earned",
+  "points_redeemed",
+  "processing_ms",
+  "company",
+  "sb_payload",
+  "request_payload",
+  "response_payload",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "POS Transaction ID",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Sale\nReturn",
+   "default": "Sale",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Received\nSuccess\nFailed",
+   "default": "Received",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "store",
+   "fieldtype": "Link",
+   "label": "Store",
+   "options": "Loyalty Store",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "terminal",
+   "fieldtype": "Data",
+   "label": "Terminal"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "label": "Member",
+   "options": "Loyalty Member",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total"
+  },
+  {
+   "fieldname": "points_earned",
+   "fieldtype": "Int",
+   "label": "Points Earned"
+  },
+  {
+   "fieldname": "points_redeemed",
+   "fieldtype": "Int",
+   "label": "Points Redeemed"
+  },
+  {
+   "fieldname": "processing_ms",
+   "fieldtype": "Int",
+   "label": "Processing Time (ms)"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "sb_payload",
+   "fieldtype": "Section Break",
+   "label": "Payload"
+  },
+  {
+   "fieldname": "request_payload",
+   "fieldtype": "Code",
+   "label": "Request",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "response_payload",
+   "fieldtype": "Code",
+   "label": "Response",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty POS Sync Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash",
+ "in_create": 1
+}

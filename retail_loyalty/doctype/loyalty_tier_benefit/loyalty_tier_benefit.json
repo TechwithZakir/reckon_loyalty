@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tier_name",
+  "card_color",
+  "benefits"
+ ],
+ "fields": [
+  {
+   "fieldname": "tier_name",
+   "fieldtype": "Data",
+   "label": "Tier Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "card_color",
+   "fieldtype": "Color",
+   "label": "Card Colour",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "benefits",
+   "fieldtype": "Small Text",
+   "label": "Benefits",
+   "in_list_view": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Tier Benefit",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1
+}

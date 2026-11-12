@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="{{ data.brand_color if data else '#111827' }}">
+<title>{{ (data.brand ~ " Member Card") if data else "Member Card" }}</title>
+<link rel="stylesheet" href="/assets/reckon_loyalty/css/loyalty_card.css">
+</head>
+<body>
+{% macro money(value) %}৳{{ frappe.utils.fmt_money(value or 0, 0) }}{% endmacro %}
+{% macro day(value) %}{{ frappe.utils.formatdate(value, "d MMM yyyy") if value else "" }}{% endmacro %}
+<main class="wrap">
+{% if not data %}
+	<section class="panel center">
+		<h1>Card not found</h1>
+		<p class="muted">This card link is not valid. Please open the link from your SMS again, or ask at any store.</p>
+		<a class="btn" href="/loyalty-join">Become a member</a>
+	</section>
+{% else %}
+	{% set p = data.profile %}
+	<header class="top" style="--brand: {{ data.brand_color }}">
+		<span class="brand">{{ data.brand }}</span>
+		<span class="muted-light">Member since {{ day(p.member_since) }}</span>
+	</header>
+
+	<section class="card" style="background: {{ p.tier_color }}">
+		<div class="row"><span class="label">{{ data.brand }} Club</span><span class="chip">{{ p.tier }}</span></div>
+		<div class="name">{{ p.member_name }}</div>
+		<div class="number">{{ p.card_number }}</div>
+		<div class="row end"><div><span class="label">Points</span><b class="points">{{ p.points_balance }}</b></div>
+			<div class="right"><span class="label">Worth</span><b>{{ money(p.points_value) }}</b></div></div>
+	</section>
+
+	<section class="panel center">
+		<div class="qr" id="qr">{{ p.qr_svg }}</div>
+		<p class="muted small">Show this code at the till to earn and redeem points</p>
+		{% if p.status != "Active" %}<p class="warn">This card is {{ p.status | lower }}.</p>{% endif %}
+	</section>
+
+	<section class="panel">
+		<div class="row"><h2>{{ p.tier }} tier</h2>
+			{% if p.next_tier %}<span class="muted small">{{ money(p.spend_to_next_tier) }} to {{ p.next_tier }}</span>
+			{% else %}<span class="muted small">Top tier</span>{% endif %}</div>
+		<div class="progress"><i style="width: {{ p.tier_progress }}%"></i></div>
+		<p class="muted small">{{ p.earn_rule }}{% if p.tier_benefits %}. {{ p.tier_benefits }}{% endif %}</p>
+		{% if p.points_expiring_30d %}<p class="warn">{{ p.points_expiring_30d }} points expire in the next 30 days.</p>{% endif %}
+		<div class="tiers">
+			{% for tier in data.tiers %}
+			<div class="tier {{ 'on' if tier.tier == p.tier else '' }}"><i style="background: {{ tier.color }}"></i>
+				<b>{{ tier.tier }}</b><span>{{ money(tier.min_spent) }}+</span></div>
+			{% endfor %}
+		</div>
+	</section>
+
+	{% if data.vouchers %}
+	<section class="panel">
+		<h2>Your vouchers</h2>
+		{% for voucher in data.vouchers %}
+		<div class="line"><div><b>{{ voucher.reward }}</b><span class="muted small">Valid till {{ day(voucher.valid_till) }}</span></div>
+			<code>{{ voucher.voucher_code }}</code></div>
+		{% endfor %}
+	</section>
+	{% endif %}
+
+	<section class="panel">
+		<h2>Rewards</h2>
+		{% for reward in data.rewards %}
+		<div class="line"><div><b>{{ reward.reward_name }}</b>
+			<span class="muted small">{{ reward.description or reward.reward_type }}{% if reward.minimum_tier %} · {{ reward.minimum_tier }} and above{% endif %}</span></div>
+			<span class="pill {{ 'ok' if reward.can_redeem else '' }}">{{ reward.points_required }} pts</span></div>
+		{% else %}<p class="muted small">No rewards are available right now.</p>{% endfor %}
+		<p class="muted small">Ask at the till to redeem a reward or to pay with points.</p>
+	</section>
+
+	<section class="panel">
+		<h2>Recent purchases</h2>
+		{% for row in data.purchases %}
+		<div class="line"><div><b>{{ day(row.date) }}{% if row.store %} · {{ row.store }}{% endif %}</b>
+			<span class="muted small">{{ row["items"] | join(", ") }}</span></div>
+			<div class="right"><b>{{ money(row.total) }}</b>
+			<span class="small {{ 'neg' if row.is_return else 'pos' }}">{% if row.is_return %}Return{% else %}+{{ row.points_earned }} pts{% endif %}{% if row.points_redeemed %} · -{{ row.points_redeemed }}{% endif %}</span></div></div>
+		{% else %}<p class="muted small">Your purchases will appear here.</p>{% endfor %}
+	</section>
+
+	<section class="panel">
+		<h2>Points activity</h2>
+		{% for row in data.ledger %}
+		<div class="line"><div><b>{{ row.source }}</b><span class="muted small">{{ day(row.date) }}{% if row.points > 0 %} · expires {{ day(row.expires) }}{% endif %}</span></div>
+			<b class="{{ 'pos' if row.points > 0 else 'neg' }}">{{ "+" if row.points > 0 else "" }}{{ row.points }}</b></div>
+		{% else %}<p class="muted small">No points yet.</p>{% endfor %}
+	</section>
+
+	<footer class="muted small center">{{ p.card_number }} · {{ p.mobile_no[:3] }}••••{{ p.mobile_no[-4:] }}<br>Add this page to your home screen to keep your card handy.</footer>
+{% endif %}
+</main>
+<script>
+	// Tap the QR code to enlarge it for the scanner.
+	var qr = document.getElementById("qr");
+	if (qr) qr.addEventListener("click", function () { qr.classList.toggle("zoom"); });
+</script>
+</body>
+</html>

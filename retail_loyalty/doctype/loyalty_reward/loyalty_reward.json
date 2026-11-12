@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reward_name",
+  "reward_type",
+  "points_required",
+  "is_active",
+  "cb1",
+  "company",
+  "voucher_value",
+  "discount_percent",
+  "item",
+  "minimum_tier",
+  "valid_days",
+  "sb_desc",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "reward_name",
+   "fieldtype": "Data",
+   "label": "Reward Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reward_type",
+   "fieldtype": "Select",
+   "label": "Reward Type",
+   "options": "Cash Voucher\nFree Item\nDiscount Voucher",
+   "reqd": 1,
+   "default": "Cash Voucher",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "points_required",
+   "fieldtype": "Int",
+   "label": "Points Required",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "voucher_value",
+   "fieldtype": "Currency",
+   "label": "Voucher Value",
+   "depends_on": "eval:doc.reward_type=='Cash Voucher'"
+  },
+  {
+   "fieldname": "discount_percent",
+   "fieldtype": "Percent",
+   "label": "Discount %",
+   "depends_on": "eval:doc.reward_type=='Discount Voucher'"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Free Item",
+   "options": "Item",
+   "depends_on": "eval:doc.reward_type=='Free Item'"
+  },
+  {
+   "fieldname": "minimum_tier",
+   "fieldtype": "Data",
+   "label": "Minimum Tier"
+  },
+  {
+   "fieldname": "valid_days",
+   "fieldtype": "Int",
+   "label": "Voucher Valid for (Days)",
+   "default": "30"
+  },
+  {
+   "fieldname": "sb_desc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Reward",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:reward_name",
+ "naming_rule": "By fieldname"
+}

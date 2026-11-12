@@ -1,0 +1,72 @@
+/* Retail Loyalty: Desk styles for the member form, dashboard and POS simulator. */
+.rl-member-head { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; margin-bottom: 8px; }
+.rl-card {
+	width: 320px; max-width: 100%; min-height: 190px; border-radius: 16px; padding: 18px 20px; color: #fff;
+	display: flex; flex-direction: column; justify-content: space-between;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, .18); position: relative; overflow: hidden;
+}
+.rl-card::after {
+	content: ""; position: absolute; right: -60px; top: -60px; width: 200px; height: 200px; border-radius: 50%;
+	background: rgba(255, 255, 255, .09);
+}
+.rl-card-top, .rl-card-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.rl-card-bottom { font-size: 14px; letter-spacing: 0; text-transform: none; font-weight: 600; }
+.rl-chip { background: rgba(255, 255, 255, .22); padding: 3px 10px; border-radius: 999px; font-weight: 600; }
+.rl-card-name { font-size: 20px; font-weight: 600; margin-top: 18px; }
+.rl-card-no { font-family: var(--font-family-monospace, monospace); letter-spacing: .12em; opacity: .9; }
+.rl-qr-box { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 10px; text-align: center; }
+.rl-qr-box svg { width: 150px; height: 150px; display: block; }
+.rl-facts { flex: 1; min-width: 240px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+.rl-facts > div { background: var(--subtle-fg, var(--bg-light-gray)); border-radius: 10px; padding: 10px 12px; }
+.rl-facts span { display: block; font-size: 12px; color: var(--text-muted); }
+.rl-facts b { font-size: 18px; }
+.rl-progress-row { grid-column: 1 / -1; }
+.rl-progress { height: 8px; border-radius: 999px; background: var(--border-color); overflow: hidden; margin-bottom: 6px; }
+.rl-progress i { display: block; height: 100%; background: var(--primary); border-radius: 999px; }
+.rl-table { font-size: 13px; }
+.rl-table th { font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.rl-sms { background: var(--subtle-fg, #f4f5f6); border-radius: 12px; padding: 10px 14px; white-space: pre-wrap; max-width: 360px; }
+.rl-email { border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; }
+
+/* KPI tiles */
+.rl-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.rl-kpis-inline { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+.rl-kpi { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 14px; }
+.rl-kpi span { display: block; font-size: 12px; color: var(--text-muted); }
+.rl-kpi b { font-size: 22px; font-weight: 600; line-height: 1.3; }
+.rl-kpi small { display: block; color: var(--text-muted); font-size: 11.5px; }
+
+/* Dashboard */
+.rl-dash { padding: 4px 0 40px; }
+.rl-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.rl-panel { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 16px; grid-column: span 6; min-width: 0; }
+.rl-panel.rl-wide { grid-column: span 12; }
+.rl-panel.rl-third { grid-column: span 4; }
+.rl-panel.rl-two-third { grid-column: span 8; }
+.rl-panel h5 { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
+.rl-panel .rl-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.rl-panel .table { margin-bottom: 0; }
+.rl-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.rl-bar { height: 6px; border-radius: 999px; background: var(--border-color); overflow: hidden; min-width: 60px; }
+.rl-bar i { display: block; height: 100%; background: var(--primary); }
+.rl-banner { background: var(--bg-yellow, #fff7d6); color: var(--text-on-yellow, #7c5e10); border-radius: 10px; padding: 8px 12px; font-size: 12.5px; margin-bottom: 12px; }
+@media (max-width: 991px) {
+	.rl-panel, .rl-panel.rl-third, .rl-panel.rl-two-third { grid-column: span 12; }
+}
+
+/* POS simulator */
+.rl-pos { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; padding-bottom: 40px; }
+.rl-pos-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; max-height: 420px; overflow: auto; }
+.rl-pos-item { border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; background: var(--card-bg); cursor: pointer; text-align: left; }
+.rl-pos-item:hover { border-color: var(--primary); }
+.rl-pos-item b { display: block; font-size: 12.5px; line-height: 1.3; min-height: 32px; }
+.rl-pos-item span { font-size: 12px; color: var(--text-muted); }
+.rl-pos-item em { display: block; font-style: normal; font-weight: 600; margin-top: 4px; }
+.rl-cart td, .rl-cart th { padding: 6px 8px !important; vertical-align: middle !important; }
+.rl-cart input { width: 56px; text-align: center; }
+.rl-totals { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: 14px; margin: 10px 0; }
+.rl-totals .rl-due { font-size: 20px; font-weight: 600; border-top: 1px solid var(--border-color); padding-top: 6px; }
+.rl-json { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 12px; font-size: 12px; max-height: 300px; overflow: auto; white-space: pre-wrap; word-break: break-word; }
+.rl-receipt { border: 1px dashed var(--border-color); border-radius: 10px; padding: 12px 14px; background: var(--subtle-fg, #fafafa); }
+.rl-receipt .rl-big { font-size: 22px; font-weight: 600; color: var(--green-600, #15803d); }
+@media (max-width: 991px) { .rl-pos { grid-template-columns: 1fr; } }

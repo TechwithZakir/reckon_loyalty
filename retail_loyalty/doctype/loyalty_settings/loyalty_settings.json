@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "creation": "2026-11-12 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "demo_mode",
+  "cb_main",
+  "brand_name",
+  "brand_color",
+  "sb_program",
+  "company",
+  "loyalty_program",
+  "card_prefix",
+  "cb_program",
+  "customer_group",
+  "territory",
+  "price_list",
+  "sb_bonus",
+  "welcome_bonus_points",
+  "cb_bonus",
+  "birthday_bonus_points",
+  "sb_pos",
+  "default_mode_of_payment",
+  "update_stock",
+  "cb_pos",
+  "default_warehouse",
+  "sb_crm",
+  "create_crm_lead",
+  "cb_crm",
+  "crm_lead_source",
+  "sb_tiers",
+  "tiers"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable Loyalty",
+   "default": "1"
+  },
+  {
+   "fieldname": "demo_mode",
+   "fieldtype": "Check",
+   "label": "Demo Mode (log SMS and email, do not send)",
+   "default": "1",
+   "description": "While ticked, campaign and card messages are written to Loyalty Message Log with status Simulated and nothing leaves the server."
+  },
+  {
+   "fieldname": "cb_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "brand_name",
+   "fieldtype": "Data",
+   "label": "Brand Name"
+  },
+  {
+   "fieldname": "brand_color",
+   "fieldtype": "Color",
+   "label": "Brand Colour"
+  },
+  {
+   "fieldname": "sb_program",
+   "fieldtype": "Section Break",
+   "label": "Programme"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "loyalty_program",
+   "fieldtype": "Link",
+   "label": "Loyalty Program",
+   "options": "Loyalty Program",
+   "description": "ERPNext Loyalty Program that holds the tiers, earn rate, point value and expiry."
+  },
+  {
+   "fieldname": "card_prefix",
+   "fieldtype": "Data",
+   "label": "Card Number Prefix",
+   "default": "RL"
+  },
+  {
+   "fieldname": "cb_program",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Member Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Member Territory",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Retail Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "sb_bonus",
+   "fieldtype": "Section Break",
+   "label": "Bonus Points"
+  },
+  {
+   "fieldname": "welcome_bonus_points",
+   "fieldtype": "Int",
+   "label": "Welcome Bonus Points"
+  },
+  {
+   "fieldname": "cb_bonus",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "birthday_bonus_points",
+   "fieldtype": "Int",
+   "label": "Birthday Bonus Points"
+  },
+  {
+   "fieldname": "sb_pos",
+   "fieldtype": "Section Break",
+   "label": "POS Integration"
+  },
+  {
+   "fieldname": "default_mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Default Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "update_stock",
+   "fieldtype": "Check",
+   "label": "POS Sales Update Stock",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_pos",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "sb_crm",
+   "fieldtype": "Section Break",
+   "label": "Frappe CRM"
+  },
+  {
+   "fieldname": "create_crm_lead",
+   "fieldtype": "Check",
+   "label": "Create a CRM Lead for Web and App Sign-ups",
+   "default": "0"
+  },
+  {
+   "fieldname": "cb_crm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "crm_lead_source",
+   "fieldtype": "Data",
+   "label": "CRM Lead Source",
+   "default": "Loyalty Signup"
+  },
+  {
+   "fieldname": "sb_tiers",
+   "fieldtype": "Section Break",
+   "label": "Tier Presentation"
+  },
+  {
+   "fieldname": "tiers",
+   "fieldtype": "Table",
+   "label": "Tier Benefits",
+   "options": "Loyalty Tier Benefit"
+  }
+ ],
+ "links": [],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Loyalty Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  },
+  {
+   "role": "Loyalty Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

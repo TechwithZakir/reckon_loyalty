@@ -1,0 +1,273 @@
+{
+ "app": "reckon_loyalty",
+ "charts": [],
+ "content": "[{\"id\": \"rl_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Retail Loyalty</b></span>\", \"col\": 12}}, {\"id\": \"rl_s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Dashboard\", \"col\": 2}}, {\"id\": \"rl_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"POS Simulator\", \"col\": 2}}, {\"id\": \"rl_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Members\", \"col\": 2}}, {\"id\": \"rl_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Segments\", \"col\": 2}}, {\"id\": \"rl_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Campaigns\", \"col\": 2}}, {\"id\": \"rl_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Rewards\", \"col\": 2}}, {\"id\": \"rl_sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"rl_c0\", \"type\": \"card\", \"data\": {\"card_name\": \"Membership\", \"col\": 4}}, {\"id\": \"rl_c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Points and Rewards\", \"col\": 4}}, {\"id\": \"rl_c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Marketing\", \"col\": 4}}, {\"id\": \"rl_c3\", \"type\": \"card\", \"data\": {\"card_name\": \"POS Integration\", \"col\": 4}}, {\"id\": \"rl_c4\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
+ "creation": "2026-11-12 10:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "heart",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Retail Loyalty",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Membership",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Member",
+   "link_count": 0,
+   "link_to": "Loyalty Member",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Store",
+   "link_count": 0,
+   "link_to": "Loyalty Store",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer",
+   "link_count": 0,
+   "link_to": "Customer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Points and Rewards",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Program",
+   "link_count": 0,
+   "link_to": "Loyalty Program",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Point Entry",
+   "link_count": 0,
+   "link_to": "Loyalty Point Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Reward",
+   "link_count": 0,
+   "link_to": "Loyalty Reward",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Reward Redemption",
+   "link_count": 0,
+   "link_to": "Loyalty Reward Redemption",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketing",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Segment",
+   "link_count": 0,
+   "link_to": "Loyalty Segment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Campaign",
+   "link_count": 0,
+   "link_to": "Loyalty Campaign",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Message Log",
+   "link_count": 0,
+   "link_to": "Loyalty Message Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS Integration",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS Simulator",
+   "link_count": 0,
+   "link_to": "loyalty-pos-simulator",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty POS Sync Log",
+   "link_count": 0,
+   "link_to": "Loyalty POS Sync Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Settings",
+   "link_count": 0,
+   "link_to": "Loyalty Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Dashboard",
+   "link_count": 0,
+   "link_to": "loyalty-dashboard",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-12 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Retail Loyalty",
+ "name": "Retail Loyalty",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Loyalty Manager"
+  },
+  {
+   "role": "Loyalty User"
+  }
+ ],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "label": "Dashboard",
+   "link_to": "loyalty-dashboard",
+   "type": "Page",
+   "color": "Blue"
+  },
+  {
+   "label": "POS Simulator",
+   "link_to": "loyalty-pos-simulator",
+   "type": "Page",
+   "color": "Green"
+  },
+  {
+   "label": "Members",
+   "link_to": "Loyalty Member",
+   "type": "DocType",
+   "color": "Grey",
+   "doc_view": "List"
+  },
+  {
+   "label": "Segments",
+   "link_to": "Loyalty Segment",
+   "type": "DocType",
+   "color": "Grey",
+   "doc_view": "List"
+  },
+  {
+   "label": "Campaigns",
+   "link_to": "Loyalty Campaign",
+   "type": "DocType",
+   "color": "Grey",
+   "doc_view": "List"
+  },
+  {
+   "label": "Rewards",
+   "link_to": "Loyalty Reward",
+   "type": "DocType",
+   "color": "Grey",
+   "doc_view": "List"
+  }
+ ],
+ "title": "Retail Loyalty",
+ "type": "Workspace"
+}

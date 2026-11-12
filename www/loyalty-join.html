@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="{{ brand_color }}">
+<title>Join {{ brand }} Club</title>
+<link rel="stylesheet" href="/assets/reckon_loyalty/css/loyalty_card.css">
+</head>
+<body>
+<main class="wrap">
+	<header class="top"><span class="brand">{{ brand }}</span><span class="muted-light">Club membership</span></header>
+
+	<section class="panel">
+		<h1>Become a member</h1>
+		<p class="muted">Get a digital member card on your phone in under a minute.</p>
+		<ul class="perks">
+			{% if welcome_bonus %}<li>{{ welcome_bonus }} welcome points</li>{% endif %}
+			<li>Earn points on every purchase, in every store</li>
+			<li>Pay with points and unlock {{ tiers | map(attribute="tier_name") | join(", ") }} tiers</li>
+		</ul>
+	</section>
+
+	<section class="panel">
+		<form class="form" id="join" novalidate>
+			<div id="notice" role="alert"></div>
+			<label>Full name<input name="member_name" autocomplete="name" required minlength="3"></label>
+			<label>Mobile number<input name="mobile_no" type="tel" inputmode="numeric" autocomplete="tel" placeholder="01XXXXXXXXX" required></label>
+			<label>Email (optional)<input name="email" type="email" autocomplete="email"></label>
+			<div class="two">
+				<label>Gender<select name="gender"><option value=""></option><option>Female</option><option>Male</option><option>Other</option></select></label>
+				<label>Date of birth<input name="date_of_birth" type="date"></label>
+			</div>
+			<label>Your nearest store<select name="store"><option value=""></option>
+				{% for store in stores %}<option value="{{ store.name }}">{{ store.name }}{% if store.city %}, {{ store.city }}{% endif %}</option>{% endfor %}
+			</select></label>
+			<label class="check"><input type="checkbox" name="consent" value="1" required>
+				<span>I agree to the membership terms and to receive offers by SMS and email. I can opt out at any time.</span></label>
+			<button class="btn" type="submit">Get my card</button>
+		</form>
+	</section>
+</main>
+<script>
+(function () {
+	var form = document.getElementById("join"), notice = document.getElementById("notice");
+	function show(kind, text) { notice.className = "notice " + kind; notice.textContent = text; }
+	form.addEventListener("submit", function (event) {
+		event.preventDefault();
+		var data = new FormData(form), body = {};
+		data.forEach(function (value, key) { body[key] = value; });
+		if (!body.consent) return show("error", "Please accept the membership terms to continue.");
+		var button = form.querySelector("button");
+		button.disabled = true;
+		fetch("/api/method/reckon_loyalty.api.member.join", {
+			method: "POST",
+			headers: { "Content-Type": "application/json", "X-Frappe-CSRF-Token": "{{ csrf_token }}" },
+			body: JSON.stringify(body)
+		}).then(function (response) {
+			return response.json().then(function (json) { return { ok: response.ok, json: json }; });
+		}).then(function (result) {
+			if (result.ok && result.json.message && result.json.message.status === "created") {
+				window.location.href = result.json.message.card_url;
+				return;
+			}
+			button.disabled = false;
+			if (result.ok && result.json.message) return show("info", result.json.message.message);
+			var text = "Something went wrong. Please try again.";
+			try {
+				var messages = JSON.parse(result.json._server_messages || "[]");
+				if (messages.length) text = JSON.parse(messages[0]).message.replace(/<[^>]+>/g, "");
+			} catch (e) {}
+			if (result.json.exc_type === "RateLimitExceededError") text = "Too many attempts. Please try again later.";
+			show("error", text);
+		}).catch(function () { button.disabled = false; show("error", "No connection. Please try again."); });
+	});
+})();
+</script>
+</body>
+</html>
