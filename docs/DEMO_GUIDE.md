@@ -36,7 +36,7 @@ liability in the books they already use.
 Seeded by `bench --site <site> execute reckon_loyalty.demo.seed.run` under its own company
 **Sailor (Demo)**, so it does not mix with other companies on the site.
 
-- 38 products in five categories with the names and list prices shown on sailor.clothing
+- 37 products in five categories with the names and list prices shown on sailor.clothing
   (November 2026), and 8 real outlets from the store locator.
 - 60 **fictional** members (invented names, placeholder mobile numbers, example.com emails)
   with about six months of purchases posted through the POS API.

@@ -31,6 +31,7 @@ def run(members=60, months=6, force_sales=0):
     stores = _stores(company)
     program = _program(company)
     _settings(company, program)
+    _fiscal_years(company, cint(months))
     frappe.db.commit()
 
     member_names = _members(rng, cint(members), cint(months), stores)
@@ -238,6 +239,21 @@ def _settings(company, program):
         )
         mode.append("accounts", {"company": company, "default_account": cash})
         mode.save(ignore_permissions=True)
+
+
+def _fiscal_years(company, months):
+    """A fiscal year that lists companies only applies to those: add the demo company where needed."""
+    start = add_days(today(), -(months * 30 + 5))
+    years = frappe.get_all(
+        "Fiscal Year",
+        filters={"disabled": 0, "year_end_date": [">=", start], "year_start_date": ["<=", today()]},
+        pluck="name",
+    )
+    for name in years:
+        doc = frappe.get_doc("Fiscal Year", name)
+        if doc.companies and not any(row.company == company for row in doc.companies):
+            doc.append("companies", {"company": company})
+            doc.save(ignore_permissions=True)
 
 
 # ---------------------------------------------------------------- members
