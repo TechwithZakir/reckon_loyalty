@@ -1,7 +1,7 @@
 {
  "app": "reckon_loyalty",
  "charts": [],
- "content": "[{\"id\": \"rl_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Retail Loyalty</b></span>\", \"col\": 12}}, {\"id\": \"rl_s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Dashboard\", \"col\": 2}}, {\"id\": \"rl_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"POS Simulator\", \"col\": 2}}, {\"id\": \"rl_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Members\", \"col\": 2}}, {\"id\": \"rl_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Segments\", \"col\": 2}}, {\"id\": \"rl_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Campaigns\", \"col\": 2}}, {\"id\": \"rl_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Rewards\", \"col\": 2}}, {\"id\": \"rl_sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"rl_c0\", \"type\": \"card\", \"data\": {\"card_name\": \"Membership\", \"col\": 4}}, {\"id\": \"rl_c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Points and Rewards\", \"col\": 4}}, {\"id\": \"rl_c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Marketing\", \"col\": 4}}, {\"id\": \"rl_c3\", \"type\": \"card\", \"data\": {\"card_name\": \"POS Integration\", \"col\": 4}}, {\"id\": \"rl_c4\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
+ "content": "[{\"id\": \"rl_h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Retail Loyalty</b></span>\", \"col\": 12}}, {\"id\": \"rl_s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Analytics Dashboard\", \"col\": 2}}, {\"id\": \"rl_s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"QR Customer Identification\", \"col\": 2}}, {\"id\": \"rl_s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Profile & Purchase History\", \"col\": 2}}, {\"id\": \"rl_s6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer Registration\", \"col\": 2}}, {\"id\": \"rl_s7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Mobile Join & Digital Card\", \"col\": 2}}, {\"id\": \"rl_s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Segments\", \"col\": 2}}, {\"id\": \"rl_s4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Campaigns\", \"col\": 2}}, {\"id\": \"rl_s5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Rewards\", \"col\": 2}}, {\"id\": \"rl_sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"rl_c0\", \"type\": \"card\", \"data\": {\"card_name\": \"Membership\", \"col\": 4}}, {\"id\": \"rl_c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Points and Rewards\", \"col\": 4}}, {\"id\": \"rl_c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Marketing\", \"col\": 4}}, {\"id\": \"rl_c3\", \"type\": \"card\", \"data\": {\"card_name\": \"POS Integration\", \"col\": 4}}, {\"id\": \"rl_c4\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}]",
  "creation": "2026-11-12 10:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -228,23 +228,36 @@
  "sequence_id": 30.0,
  "shortcuts": [
   {
-   "label": "Dashboard",
+   "label": "Customer Analytics Dashboard",
    "link_to": "loyalty-dashboard",
    "type": "Page",
    "color": "Blue"
   },
   {
-   "label": "POS Simulator",
+   "label": "QR Customer Identification",
    "link_to": "loyalty-pos-simulator",
    "type": "Page",
    "color": "Green"
   },
   {
-   "label": "Members",
+   "label": "Customer Profile & Purchase History",
    "link_to": "Loyalty Member",
    "type": "DocType",
    "color": "Grey",
    "doc_view": "List"
+  },
+  {
+   "label": "Customer Registration",
+   "link_to": "Loyalty Member",
+   "type": "DocType",
+   "color": "Green",
+   "doc_view": "New"
+  },
+  {
+   "label": "Mobile Join & Digital Card",
+   "type": "URL",
+   "url": "/loyalty-join",
+   "color": "Blue"
   },
   {
    "label": "Segments",

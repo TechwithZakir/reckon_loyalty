@@ -31,6 +31,24 @@ liability in the books they already use.
 | 8 | Customer analytics and management dashboard | Loyalty Dashboard page |
 | 9 | Mobile application and digital card integration | Mobile-first card page that can be added to the home screen, and the JSON API behind it (`api.member.get_card`, `api.member.join`) for a native app |
 
+## Retail Loyalty menu
+
+Open the **Retail Loyalty** workspace from the app menu. Its five feature shortcuts are:
+
+1. **Customer Registration** opens a new app-owned Loyalty Member form.
+2. **QR Customer Identification** opens the POS Simulator, where staff can scan a
+   member's QR code or look them up by card/mobile.
+3. **Customer Profile & Purchase History** opens Loyalty Member records, with linked
+   ERPNext customers, digital cards, invoices and points history.
+4. **Customer Analytics Dashboard** opens the loyalty management dashboard.
+5. **Mobile Join & Digital Card** also serves as the customer's mobile-friendly card
+   entry point; issued cards open at `/card/<token>` and can be saved to a phone's home
+   screen.
+
+The workspace also links to ERPNext Customer, Sales Invoice and Loyalty Program records.
+When Frappe CRM is installed, member/segment actions can create CRM Leads; CRM remains
+the system of record for those leads.
+
 ## Demo data
 
 Seeded by `bench --site <site> execute reckon_loyalty.demo.seed.run` under its own company
