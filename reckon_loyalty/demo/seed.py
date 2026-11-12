@@ -149,6 +149,8 @@ def _customer_group():
         frappe.get_doc(
             {"doctype": "Customer Group", "customer_group_name": C.CUSTOMER_GROUP, "parent_customer_group": root, "is_group": 0}
         ).insert(ignore_permissions=True)
+    # Invoices raised by hand in ERPNext for a member then default to the retail prices.
+    frappe.db.set_value("Customer Group", C.CUSTOMER_GROUP, "default_price_list", C.PRICE_LIST)
 
 
 def _stores(company):

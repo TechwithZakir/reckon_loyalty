@@ -217,9 +217,18 @@ def _post_sale(payload, external_id):
     for row in items:
         if not row.get("item_code") or flt(row.get("qty")) <= 0:
             frappe.throw(_("Each item needs an item_code and a positive qty."))
-        line = {"item_code": row["item_code"], "qty": flt(row["qty"])}
-        if row.get("rate") is not None:
-            line["rate"] = flt(row["rate"])
+        rate = row.get("rate")
+        if rate is None:
+            rate = frappe.db.get_value(
+                "Item Price",
+                {"item_code": row["item_code"], "price_list": settings.price_list, "selling": 1},
+                "price_list_rate",
+            )
+            if rate is None:
+                frappe.throw(
+                    _("Item {0} has no price in {1}. Send a rate.").format(row["item_code"], settings.price_list)
+                )
+        line = {"item_code": row["item_code"], "qty": flt(row["qty"]), "rate": flt(rate), "price_list_rate": flt(rate)}
         if row.get("discount_percentage"):
             line["discount_percentage"] = flt(row["discount_percentage"])
         invoice.append("items", line)
@@ -228,6 +237,8 @@ def _post_sale(payload, external_id):
     invoice.set_missing_values()
     invoice.calculate_taxes_and_totals()
     total = flt(invoice.rounded_total) or flt(invoice.grand_total)
+    if total <= 0:
+        frappe.throw(_("The bill total is zero. Check the item rates."))
 
     redeem = cint(payload.get("redeem_points"))
     loyalty_amount = 0
