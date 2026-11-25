@@ -8,6 +8,8 @@ lang: en
 
 # Retail CRM, Membership and Loyalty on ERPNext: POS Integration for Retail Chains
 
+![Banner](banner.svg)
+
 Retail chains in Bangladesh want to know their customers, reward repeat purchases and connect the point of sale to the CRM. **Reckon Retail Loyalty** by Reckon Technologies Ltd. adds retail CRM, membership and loyalty to ERPNext and Frappe CRM, with an API for point-of-sale systems.
 
 ## Detailed features
